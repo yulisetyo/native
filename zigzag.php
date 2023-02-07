@@ -39,11 +39,11 @@ $words = strtoupper($kata);
 
 echo "kata: " . $words . "<br><br>";
 
-$cnt = strlen($words);
+$cWords = strlen($words);
 
 echo "jumlah karakter: " . $cnt."<br><br>";
 
-for ($i = 0; $i < $cnt; $i++) {
+for ($i = 0; $i < $cWords; $i++) {
 	$piece[] = substr($words, $i, 1);
 	$key[] = array_search($piece[$i], $arrChar);
 }
@@ -51,7 +51,9 @@ for ($i = 0; $i < $cnt; $i++) {
 $join = implode("|", $key);
 $zig = explode("|", $join);
 
-for ($i = 0; $i < count($zig); $i++) {
+$cZig = count($zig);
+
+for ($i = 0; $i < $cZig; $i++) {
 	$zag[] = $arrZigzag[$zig[$i]];
 	$hex[] = $arrHexa[$zig[$i]];
 	$dec[] = $arrDec[$zig[$i]];
@@ -65,4 +67,3 @@ echo "acak: ".strtolower($newZag)."<br><br>";
 echo "acak zizag: ".strtoupper($newZag)."<br><br>";
 echo "acak hexa: ".strtoupper($newHexa)."<br><br>";
 echo "acak hexa: ".strtolower($newDec)."<br><br>";
-//~ echo ucfirst(strtolower($newZag))."<br><br>";
