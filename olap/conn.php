@@ -33,13 +33,16 @@ class Conn
     
     public function koneksi()
     {
-		$host = "10.242.77.111"; //host db oracle
-		//~ $host = "10.242.67.44"; //host db oracle
-		$port = "3306"; //port default oracle
-		//~ $port = "1521"; //port default oracle
-		$service = "SIKPDEV";
-		$tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=$host)(PORT=$port))) (CONNECT_DATA=(SERVICE_NAME=$service)))";
-		//$tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.242.67.40)(PORT=1521))) (CONNECT_DATA=(SERVICE_NAME=SIKP)))";
+		//~ $host = "10.242.77.111"; //host db oracle
+		//~ $port = "3306"; //port default oracle
+		//~ $service = "SIKPDEV";
+		//~ $tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=$host)(PORT=$port))) (CONNECT_DATA=(SERVICE_NAME=$service)))";
+		
+		$port = "1521"; //port default oracle
+		$host = "10.216.208.6"; //host db oracle
+		$service = "SIKPOLAP";
+		$tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.216.208.6)(PORT=1521))) (CONNECT_DATA=(SERVICE_NAME=SIKPOLAP)))";
+		
 		$db_user = "USERKUR";
 		$db_pass = "kurmikro";
 		

@@ -6,7 +6,7 @@ $obj = new Model();
 $data = $obj->getDebitur();
 $a=1;
 
-echo "JUMLAH BARIS = ".count($data);
+//~ echo "JUMLAH BARIS = ".count($data);
 if(count($data) < 1) {
 	echo "<br/>data tidak ditemukan";
 } else {
@@ -41,6 +41,6 @@ foreach	($data as $row) {
 		';
 }
 $tabel .= '</tbody></tabel>';
-echo $tabel;
-// echo json_encode($data);
+//~ echo $tabel;
+//~ // echo json_encode($data);
 }
