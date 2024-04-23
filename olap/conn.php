@@ -41,7 +41,7 @@ class Conn
 		$port = "1521"; //port default oracle
 		$host = "10.216.208.6"; //host db oracle
 		$service = "SIKPOLAP";
-		$tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.216.208.6)(PORT=1521))) (CONNECT_DATA=(SERVICE_NAME=SIKPOLAP)))";
+		$tns = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=$host)(PORT=$port))) (CONNECT_DATA=(SERVICE_NAME=$service)))";
 		
 		$db_user = "USERKUR";
 		$db_pass = "kurmikro";

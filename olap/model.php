@@ -300,4 +300,33 @@ class Model extends Conn {
 		
 		return $data;
 	}
+	
+	public function getMonitoringUserDependencies()
+	{
+		$conn = $this->link;
+		
+		$data = [];
+		
+		$query = "
+			  SELECT A.NAME,
+					 A.REFERENCED_NAME AS REF_NAME,
+					 A.REFERENCED_TYPE AS REF_TYPE,
+					 NVL (A.REFERENCED_LINK_NAME, '_') AS REF_LINK_NAME
+				FROM USER_DEPENDENCIES A
+			   WHERE A.REFERENCED_OWNER = 'USERKUR' AND A.TYPE = 'PROCEDURE'
+			ORDER BY A.NAME
+		";
+		
+		$stid = oci_parse($conn, $query);
+		oci_execute($stid);
+		
+		while($rows = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+			$data[] = $rows;
+		}
+		
+		oci_free_statement($stid);
+		oci_close($conn);
+		
+		return $data;
+	}
 }

@@ -8,13 +8,13 @@ $conn = $obj->link;
 
 $query = "
 	  SELECT kode_bank,
-	         UPPER (nama_bank) AS nama_bank,
+	         UPPER (nama_bank) AS nama_bank
 	    FROM kur_r_bank
-	   WHERE kode_bank IS NOT NULL
+	   WHERE kode_bank IS NOT NULL AND SUBSTR (kode_bank, 1, 1) = '0'
 	ORDER BY kode_bank ASC
 ";
 
-
+$data = [];
 $stid = oci_parse($conn, $query);
 oci_execute($stid);
 // $rows = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
