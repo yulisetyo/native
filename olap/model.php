@@ -301,6 +301,40 @@ class Model extends Conn {
 		return $data;
 	}
 	
+	public function getMonitoringRunningJobs()
+	{
+		$conn = $this->link;
+		
+		$data = [];
+		
+		$query = "
+			  SELECT TO_CHAR (LOG_DATE, 'YYYY/MM/DD HH24:MM:SS') LOG_DATE,
+					 OWNER,
+					 JOB_NAME,
+					 STATUS,
+					 SUBSTR (NVL (ADDITIONAL_INFO, '_'), 1, 4000) INFO
+				FROM USER_SCHEDULER_JOB_RUN_DETAILS
+			   WHERE     JOB_NAME LIKE '%JOB_%' 
+					 AND TO_CHAR (LOG_DATE, 'YYYY/MM/DD') >= TO_CHAR (SYSDATE, 'YYYY/MM/DD')
+					 AND OWNER = 'USERKUR'
+					 /*AND JOB_NAME = 'JOB_BANK_WIL'*/
+			         /*AND STATUS = 'FAILED'*/
+			ORDER BY LOG_DATE DESC
+		";
+		
+		$stid = oci_parse($conn, $query);
+		oci_execute($stid);
+		
+		while($rows = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+			$data[] = $rows;
+		}
+		
+		oci_free_statement($stid);
+		oci_close($conn);
+		
+		return $data;
+	}
+	
 	public function getMonitoringUserDependencies()
 	{
 		$conn = $this->link;
