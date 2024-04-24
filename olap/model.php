@@ -283,15 +283,6 @@ class Model extends Conn {
 		oci_execute($stid);
 		
 		while($rows = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-			//~ $data[] = array(
-				//~ 'tahun' => $rows['TAHUN'],
-				//~ 'bulan' => $rows['BULAN'],
-				//~ 'nama_bulan' => $rows['NAMA_BULAN'],
-				//~ 'kode_prov' => $rows['KODE_PROV'],
-				//~ 'nama_prov' => $rows['NAMA_PROV'],
-				//~ 'jml_akad' => number_format($rows['JML_AKAD'], 0, ',', '.'),
-				//~ 'nilai_akad' => number_format($rows['NILAI_AKAD'], 0, ',', '.'),
-			//~ );
 			$data[] = array($rows['KODE_BANK']);
 		}
 		
